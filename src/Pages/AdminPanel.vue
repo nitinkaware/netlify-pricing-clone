@@ -43,10 +43,12 @@
     </aside>
     <div class="w-4/5 bg-gray-100">
         <div class="bg-white border shadow-sm flex justify-between items-center">
+
             <div class="relative blue-svg"> <!-- Seach Input Container -->
                 <svg class="absolute top-6 left-6 w-5 h-5 text-gray-400 hover:text-blue-300" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                <input class="text-black font-normal text-base ml-4 my-3 py-2 px-8 bg-gray-100 rounded-md focus:text-black focus:bg-white outline-none border border-transparent focus:border focus:border-gray-200 hover:border-gray-100 hover:bg-white transition duration-200 ease-in-out" type="text" id="search" name="search" placeholder="Search" autocomplete="off">
+                <input class="focus:border-blue-500 focus:outline-none focus:shadow-outline text-black font-normal text-base ml-4 my-3 py-2 px-8 bg-gray-100 rounded-md focus:text-black focus:bg-white outline-none border border-transparent focus:border focus:border-gray-200 hover:border-gray-100 hover:bg-white transition duration-200 ease-in-out" type="text" id="search" name="search" placeholder="Search" autocomplete="off">
             </div>
+            
             <div class="mr-5 flex items-center justify-between space-x-2"> <!-- Profile Avatar Section -->
                 <div 
                     class="relative rounded-full w-10 h-10 text-gray-400 hover:text-blue-500 cursor-pointer inline-flex items-center justify-center hover:bg-blue-50 transition duration-200 ease-in-out"
@@ -57,7 +59,7 @@
                     <transition name="fade">
                         <div class="absolute bg-white right-0 top-12 rounded-md shadow-3xl w-80 cursor-default" v-if="isVisible">
                             <div class="py-3 border-b font-medium uppercase text-gray-400 tracking-wide">
-                                <div class="mx-2 flex items-center justify-between">
+                                <div class="mx-4 flex items-center justify-between">
                                     <span>Notifications</span>
                                     <span class="text-xs bg-blue-200 text-blue-500 px-2 rounded-full">3 new</span>
                                 </div>
@@ -77,8 +79,8 @@
                     </transition>
                 </div>
 
-                <a href="#">
-                    <img class="w-9 h-w-9 rounded-full" src="https://pbs.twimg.com/profile_images/1239889016431861760/jmP-jjik_400x400.jpg" alt="Nitin Kaware">
+                <a href="#" class="border-2 border-gray-200 hover:border-gray-400 rounded-full">
+                    <img class="w-9 h-w-9 object-cover rounded-full" src="https://pbs.twimg.com/profile_images/1239889016431861760/jmP-jjik_400x400.jpg" alt="Nitin Kaware">
                 </a>
             </div>
         </div>
