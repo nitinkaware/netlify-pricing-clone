@@ -84,12 +84,17 @@
                 </a>
             </div>
         </div>
+        <div class="mx-4 my-4">
+            <CandidateInformation />
+        </div>
     </div>
 </div>
 </template>
 
 <script>
+import CandidateInformation from '../components/AdminPanel/CandidateInformation.vue'
 export default {
+    components: { CandidateInformation },
     data () {
         return {
             isVisible: false
