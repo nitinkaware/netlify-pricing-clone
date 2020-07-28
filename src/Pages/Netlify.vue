@@ -18,7 +18,10 @@
           </p>
         </div>
         <div class="mt-9">
-          <a href="#" class="flex space-x-2 items-center font-bold text-lg underline">
+          <a
+            href="#"
+            class="flex space-x-2 items-center font-bold text-lg underline"
+          >
             <span>See full feature table</span>
             <svg
               class="w-4 h-4"
@@ -145,7 +148,10 @@
                     ><path d="M5 13l4 4L19 7" /></svg>
                   </span>
                   <span class="text-base">
-                    Access to <a href="#" class="text-green-600">add-ons</a>
+                    Access to <a
+                      href="#"
+                      class="text-green-600"
+                    >add-ons</a>
                   </span>
                 </p>
               </div>
