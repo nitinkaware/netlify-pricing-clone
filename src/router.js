@@ -1,14 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from './Pages/Home.vue'
 import Netlify from './Pages/Netlify.vue'
-import AdminPanel from './Pages/AdminPanel.vue'
+import Dashboard from './Pages/Dashboard.vue'
 import Login from './Pages/Login.vue'
 import Interview from './Pages/Interview.vue'
+import Modals from './Pages/Modals.vue'
 
 const routes = [
     { path: "/", component: Home },
+    { path: "/dashboard", component: Dashboard },
+    { path: "/modals", component: Modals },
     { path: "/netlify", component: Netlify },
-    { path: "/admin-panel", component: AdminPanel },
     { path: "/login", component: Login },
     { path: "/interview", component: Interview },
 ];

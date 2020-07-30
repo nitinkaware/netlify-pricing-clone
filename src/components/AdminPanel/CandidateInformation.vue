@@ -43,7 +43,7 @@
       </div>
       <div
         v-if="isVisible"
-        class="p-5 bg-gray-50"
+        class="p-5 bg-blue-50"
       >
         <div class="flex items-center justify-start">
           <div class="flex-1">
