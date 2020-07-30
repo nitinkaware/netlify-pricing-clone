@@ -10,7 +10,3 @@
   transform-origin: left top;
   transform: scaleY(0);
 }
-
-html {
-  overflow-y: scroll;
-}
