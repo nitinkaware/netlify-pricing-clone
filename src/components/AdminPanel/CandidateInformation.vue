@@ -17,34 +17,28 @@
           </div>
         </div>
         <div
-          v-if="!isVisible"
           class="p-5 select-none cursor-pointer"
           @click="isVisible = !isVisible"
         > 
           <svg
-            class="w-7 h-7 text-gray-500 hover:text-gray-400"
+            class="w-7 h-7 text-gray-500 hover:text-gray-400 transform duration-700"
+            :class="{ 'rotate-180' : isVisible}"
             fill="none"
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
             viewBox="0 0 24 24"
             stroke="currentColor"
-          ><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        </div>
-        <div
-          v-if="isVisible"
-          class="p-5 select-none cursor-pointer"
-          @click="isVisible = !isVisible"
-        >
-          <svg
-            class="w-7 h-7 text-gray-500 hover:text-gray-400"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          ><path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          >
+            <path
+              v-if="!isVisible"
+              d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+            <path
+              v-if="isVisible"
+              d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
         </div>
       </div>
       <div
