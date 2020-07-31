@@ -38,7 +38,7 @@
           </div>
         </div> 
       </div>
-      <div class="bg-white rounded-md shadow-md p-5 w-2/3 space-y-6 overflow-y-auto max-h-screen">
+      <div class="bg-white rounded-md shadow-md p-5 w-2/3 space-y-6">
         <QuestionSet
           v-for="i in 5"
           :key="i"

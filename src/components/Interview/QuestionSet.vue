@@ -47,6 +47,7 @@
         <p class="text-gray-500 uppercase tracking-normal text-sm font-semibold mt-5">
           Topic Mentioned
         </p>    
+
         <div class="space-x-2 mt-1 space-y-2">
           <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Scope Level</span>
           <span class="inline-flex items-center justify-between text-sm font-medium text-gray-600 bg-gray-300 px-3 py-0.5 rounded-full">function scope</span>
@@ -59,6 +60,62 @@
           <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">ES6</span>
           <span class="inline-flex items-center justify-between text-sm font-medium text-gray-600 bg-gray-300 px-3 py-0.5 rounded-full">Modern JavaScript</span>
         </div>
+        <div class="mt-4 flex items-center justify-start space-x-1">
+          <span
+            class="w-28 text-gray-500 uppercase tracking-normal text-sm font-semibold underline cursor-pointer select-none"
+            @click="isAddAnswer = !isAddAnswer"
+          >
+            {{ isAddAnswer ? 'Hide answer' : 'Add Answer' }}
+          </span>
+          
+          <div
+            v-if="isSaving"
+            class="inline-flex items-center space-x-1"
+          >
+            <span class="text-sm font-medium text-gray-400">
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              ><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+            </span>
+          
+            <span class="text-sm font-medium text-gray-400">
+              Saving...
+            </span>
+          </div>
+          
+          <div
+            v-if="isSaved"
+            class="inline-flex items-center space-x-1"
+          >
+            <span class="text-sm font-medium text-gray-400">
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              ><path d="M5 13l4 4L19 7"></path></svg>
+            </span>
+          
+            <span class="text-sm font-medium text-gray-400">
+              Saved
+            </span>
+          </div>
+        </div>
+        
+        <textarea
+          v-show="isAddAnswer"
+          v-model="answer"
+          class="focus:border-blue-500 focus:outline-none focus:shadow-outline text-black font-normal text-base my-3 py-2 px-2 bg-gray-100 rounded-md focus:text-black focus:bg-white outline-none border border-transparent focus:border focus:border-gray-200 hover:border-gray-100 hover:bg-white transition duration-200 ease-in-out w-full"
+        ></textarea>
       </div>
     </transition>
   </div>
@@ -68,7 +125,40 @@
 export default {
     data () {
       return {
-        isVisible: false
+        isVisible: false,
+        isAddAnswer: false,
+        isSaving: false,
+        isSaved: false,
+        answer: null,
+        setTimeout: null
+      }
+    },
+    watch: {
+      isSaved(newValue) {
+        if(newValue) {
+          setTimeout(() => {
+            this.isSaved = false
+          }, 3000)
+        }
+      },
+      isSaving (newValue) {
+        if(newValue) {
+          setTimeout(() => {
+            this.isSaving = false
+            this.isSaved = true
+          }, 2000)
+        }
+      },
+      answer() {
+        this.isSaved = false
+        
+        if (this.setTimeout) {
+          clearTimeout(this.setTimeout)
+        }
+
+        this.setTimeout = setTimeout(() => {
+          this.isSaving = true
+        }, 2000);
       }
     }
 }
