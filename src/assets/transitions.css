@@ -10,3 +10,42 @@
   transform-origin: left top;
   transform: scaleY(0);
 }
+
+.dropdown-enter-active {
+    animation: growOut 500ms ease-in-out forwards;
+    transform-origin: top center
+}
+
+.dropdown-leave-active {
+    animation: growIn 500ms ease-in-out forwards;
+    transform-origin: top center
+}
+
+/* .dropdown-leave-active {
+    animation: growUp 300ms ease-in-out backwards;
+    transform-origin: top right
+} */
+
+@keyframes growOut {
+  0% {
+    transform: scaleY(0);
+  }
+  80% {
+      transform: scaleY(1.1);
+  }
+  100% {
+      transform: scaleY(1);
+  }
+}
+
+@keyframes growIn {
+  0% {
+    transform: scaleY(1);
+  }
+  80% {
+      transform: scaleY(1.1);
+  }
+  100% {
+      transform: scaleY(0);
+  }
+}

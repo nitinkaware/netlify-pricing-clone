@@ -1,6 +1,6 @@
 <template>
   <div
-    class="px-4 py-2 rounded-md max-w-3xl"
+    class="px-4 py-2 rounded-md"
     :class="{
       'bg-gray-50 hover:bg-gray-200 transition ease-in-out duration-300': !isVisible,
       'border border-gray-00 border-dashed': isVisible,
@@ -35,30 +35,32 @@
         </svg>
       </span>
     </div>
-    <div
-      v-if="isVisible"
-      class="mt-5"
-    >
-      <span class="text-gray-500">
-        Let is a mathematical statement that was adopted by early programming languages like Scheme and Basic. It has been borrowed from dozens of other languages that use let already as a traditional keyword as close to var as possible.
-      </span>
+    <transition name="dropdown">
+      <div
+        v-if="isVisible"
+        class="mt-5"
+      >
+        <span class="text-gray-500">
+          Let is a mathematical statement that was adopted by early programming languages like Scheme and Basic. It has been borrowed from dozens of other languages that use let already as a traditional keyword as close to var as possible.
+        </span>
 
-      <p class="text-gray-500 uppercase tracking-normal text-sm font-semibold mt-5">
-        Topic Mentioned
-      </p>    
-      <div class="space-x-2 mt-1 space-y-2">
-        <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Scope Level</span>
-        <span class="inline-flex items-center justify-between text-sm font-medium text-gray-600 bg-gray-300 px-3 py-0.5 rounded-full">function scope</span>
-        <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Hoisted</span>
-        <span class="inline-flex items-center justify-between text-sm font-medium text-gray-600 bg-gray-300 px-3 py-0.5 rounded-full">ES6</span>
-        <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Modern JavaScript</span>
-        <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Scope Level</span>
-        <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">function scope</span>
-        <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Hoisted</span>
-        <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">ES6</span>
-        <span class="inline-flex items-center justify-between text-sm font-medium text-gray-600 bg-gray-300 px-3 py-0.5 rounded-full">Modern JavaScript</span>
+        <p class="text-gray-500 uppercase tracking-normal text-sm font-semibold mt-5">
+          Topic Mentioned
+        </p>    
+        <div class="space-x-2 mt-1 space-y-2">
+          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Scope Level</span>
+          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-600 bg-gray-300 px-3 py-0.5 rounded-full">function scope</span>
+          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Hoisted</span>
+          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-600 bg-gray-300 px-3 py-0.5 rounded-full">ES6</span>
+          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Modern JavaScript</span>
+          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Scope Level</span>
+          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">function scope</span>
+          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Hoisted</span>
+          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">ES6</span>
+          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-600 bg-gray-300 px-3 py-0.5 rounded-full">Modern JavaScript</span>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
