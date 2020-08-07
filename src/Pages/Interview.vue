@@ -1,6 +1,40 @@
 <template>
   <AdminLayout>
-    <div class="flex m-4 space-x-4">
+    <div
+      v-if="!isLoading"
+      class="flex m-4 space-x-4"
+    >
+      <div class="bg-white rounded-md shadow-md p-5 w-1/3">
+        <div
+          class="flex flex-col items-center justify-center space-y-4 animate-pulse"
+        >
+          <div class="w-32 h-32 rounded-full bg-gray-300" />
+          <div class="flex flex-col items-center justify-center space-y-1">
+            <span class="bg-gray-300 h-3.5 w-28 rounded-md" />
+            <span class="bg-gray-300 h-3.5 w-36 rounded-md" />
+            <span class="bg-gray-300 h-3.5 w-48 rounded-md" />
+          </div>
+          <div class="flex flex-wrap items-center justify-center space-x-2">
+            <div
+              v-for="i in 4"
+              :key="i"
+              class="w-16 h-6 rounded-full bg-gray-300 mt-2"
+            />
+          </div>
+        </div> 
+      </div>
+      <div class="bg-white rounded-md shadow-md p-5 w-2/3 space-y-6 animate-pulse">
+        <div
+          v-for="i in 4"
+          :key="i"
+          class="h-9 w-full bg-gray-300 rounded"
+        />
+      </div>
+    </div>
+    <div
+      v-else
+      class="flex m-4 space-x-4"
+    >
       <div class="bg-white rounded-md shadow-md p-5 w-1/3">
         <div
           class="flex flex-col items-center justify-center space-y-4"
@@ -62,6 +96,7 @@ export default {
     data () {
       return {
         isVisible: false,
+        isLoading: false,
         skills: [
           {
             id: 1,
@@ -178,6 +213,11 @@ export default {
       selectedSkills () {
         return this.skills.filter(skill => !!skill.isChecked)
       }
+    },
+    mounted () {
+      setTimeout(() => {
+        this.isLoading = true
+      }, 2000);
     },
     methods: {
       onBadgeToggled ({ badge, isChecked }) {
