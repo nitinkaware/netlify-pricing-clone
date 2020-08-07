@@ -4,21 +4,26 @@
     :class="customBadgeClasses"
     @click="onBadgeClicked()"
   >
-    {{ skill.name }}
+    <slot name="badgeName"></slot>
   </span>
 </template>
 
 <script>
 export default {
     props: {
-        skill: {
+        badge: {
             type: Object,
             required: true
+        },
+        isChecked: {
+            type: Boolean,
+            required: false,
+            default: false
         }
     },
     computed: {
         customBadgeClasses () {
-            if(this.skill.isChecked) {
+            if(this.isChecked) {
                 return ['text-white', 'bg-gray-500', 'hover:bg-gray-400']
             }       
 
@@ -27,7 +32,10 @@ export default {
     },
     methods: {
         onBadgeClicked () {
-            this.$emit('badgeToggled', this.skill)
+            this.$emit('badgeToggled', {
+                badge: this.badge,
+                isChecked: !this.isChecked
+            })
         }
     }
 }

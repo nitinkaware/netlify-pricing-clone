@@ -10,9 +10,10 @@
       class="flex justify-between items-center cursor-pointer"
       @click="isVisible = !isVisible"
     >
-      <h1 class="font-medium text-gray-800">
-        What is the difference between let and var?
-      </h1>
+      <h1
+        class="font-medium text-gray-800"
+        v-text="question.question"
+      />
       <span>
         <svg
           class="w-7 h-7 text-gray-500 hover:text-gray-400 transform duration-700 ml-6"
@@ -40,25 +41,28 @@
         v-if="isVisible"
         class="mt-5"
       >
-        <span class="text-gray-500">
-          Let is a mathematical statement that was adopted by early programming languages like Scheme and Basic. It has been borrowed from dozens of other languages that use let already as a traditional keyword as close to var as possible.
-        </span>
+        <span
+          class="text-gray-500"
+          v-text="question.answer"
+        />
 
         <p class="text-gray-500 uppercase tracking-normal text-sm font-semibold mt-5">
           Topic Mentioned
         </p>    
 
-        <div class="space-x-2 mt-1 space-y-2">
-          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Scope Level</span>
-          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-600 bg-gray-300 px-3 py-0.5 rounded-full">function scope</span>
-          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Hoisted</span>
-          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-600 bg-gray-300 px-3 py-0.5 rounded-full">ES6</span>
-          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Modern JavaScript</span>
-          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Scope Level</span>
-          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">function scope</span>
-          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">Hoisted</span>
-          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-700 border border-gray-300 px-3 py-0.5 rounded-full">ES6</span>
-          <span class="inline-flex items-center justify-between text-sm font-medium text-gray-600 bg-gray-300 px-3 py-0.5 rounded-full">Modern JavaScript</span>
+        <div class="space-x-2 mt-1 space-y-2 select-none">
+          <Badge 
+            v-for="(topic, index) in question.topics"
+            :key="index"
+            :badge="topic"
+            :is-checked="topic.isChecked || false"
+            class="inline-flex items-center justify-center"
+            @badgeToggled="onBadgeToggled"
+          >
+            <template v-slot:badgeName>
+              {{ topic.name }}
+            </template>
+          </Badge>
         </div>
         <div class="mt-4 flex items-center justify-start space-x-1">
           <span
@@ -122,7 +126,16 @@
 </template>
 
 <script>
+import Badge from '../Common/Elements/Badge.vue'
+
 export default {
+  components: { Badge },
+    props: {
+      question: {
+        type: Object,
+        required: true
+      }
+    },
     data () {
       return {
         isVisible: false,
@@ -159,6 +172,15 @@ export default {
         this.setTimeout = setTimeout(() => {
           this.isSaving = true
         }, 2000);
+      }
+    },
+    methods: {
+      onBadgeToggled ({ badge, isChecked }) {
+        let topic = this.question.topics.find(topic => topic.id === badge.id)
+        
+        if(topic) {
+          topic.isChecked = isChecked
+        }
       }
     }
 }

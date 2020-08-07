@@ -30,18 +30,23 @@
             <Badge
               v-for="skill in skills"
               :key="skill.id"
-              :skill="skill"
-              :name="skill.name"
+              :badge="skill"
+              :is-checked="skill.isChecked || false"
               @badgeToggled="onBadgeToggled"
-            />
+            >
+              <template v-slot:badgeName>
+                {{ skill.name }}
+              </template>
+            </Badge>
             <span class="mt-2 text-sm  uppercase tracking-wide underline font-medium cursor-pointer">+10 More</span>
           </div>
         </div> 
       </div>
       <div class="bg-white rounded-md shadow-md p-5 w-2/3 space-y-6">
         <QuestionSet
-          v-for="i in 5"
-          :key="i"
+          v-for="question in filteredQuestions"
+          :key="question.id"
+          :question="question"
         />
       </div>
     </div>
@@ -98,15 +103,88 @@ export default {
               name:'jQuery',
               isChecked: false,
           }
+        ],
+        questions: [
+          {
+            id:1,
+            question: 'What is the difference between let and var?',
+            answer: 'Let is a mathematical statement that was adopted by early programming languages like Scheme and Basic. It has been borrowed from dozens of other languages that use let already as a traditional keyword as close to var as possible.',
+            topics: [
+              {id:1, name: 'Scope Level'},
+              {id:2, name: 'function scope'},
+              {id:3, name: 'Hoisted'},
+              {id:4, name: 'ES6'},
+              {id:5, name: 'Modern JavaScript'},
+              {id:6, name: 'Scope Level'},
+              {id:7, name: 'function scope'},
+              {id:8, name: 'Hoisted'},
+              {id:9, name: 'ES6'},
+              {id:10, name: 'Modern JavaScript'},
+            ],
+            candidate_answer: null,
+            skills: [3]
+          },
+          {
+            id:1,
+            question: 'What is a promise?',
+            answer: 'A promise is an object that may produce a single value some time in the future with either a resolved value or a reason that it’s not resolved(for example, network error). It will be in one of the 3 possible states: fulfilled, rejected, or pending.',
+            topics: [
+              {id:1, name: 'Resolve'},
+              {id:2, name: 'Reject'},
+              {id:3, name: 'Async Await'},
+              {id:4, name: 'Catch'},
+              {id:5, name: 'then'}
+            ],
+            candidate_answer: null,
+            skills: [3]
+          },
+          {
+            id:1,
+            question: 'What is a callback hell?',
+            answer: 'Callback Hell is an anti-pattern with multiple nested callbacks which makes code hard to read and debug when dealing with asynchronous logic. The callback hell looks like below,',
+            topics: [
+              {id:1, name: 'Call back function'},
+              {id:2, name: 'Nested Callbacks'},
+              {id:3, name: 'Multiple functions'},
+            ],
+            candidate_answer: null,
+            skills: [3]
+          },
+          {
+            id:1,
+            question: 'What is the latest version of PHP',
+            answer: 'The current version of php is 7.4',
+            topics: [
+              {id:1, name: '7.4'},
+            ],
+            candidate_answer: null,
+            skills: [1]
+          },
         ]
       }
     },
+    computed: {
+      filteredQuestions () {
+        if(! this.skills.some(skill => !!skill.isChecked)) {
+          return this.questions  
+        }
+
+        return this.questions.filter((question) => {
+          return question.skills.filter(
+            skillId => this.selectedSkills.map(skill => skill.id).includes(skillId)
+          ).length > 0
+        })
+      },
+      selectedSkills () {
+        return this.skills.filter(skill => !!skill.isChecked)
+      }
+    },
     methods: {
-      onBadgeToggled (payload) {
-        let skill = this.skills.find(skill => skill.id === payload.id)
+      onBadgeToggled ({ badge, isChecked }) {
+        let skill = this.skills.find(skill => skill.id === badge.id)
         
         if(skill) {
-          skill.isChecked = !payload.isChecked
+          skill.isChecked = isChecked
         }
       }
     }
