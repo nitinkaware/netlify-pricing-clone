@@ -78,7 +78,7 @@
           >
             <span class="text-sm font-medium text-gray-400">
               <svg
-                class="w-4 h-4"
+                class="w-4 h-4 animate-spin"
                 fill="none"
                 stroke-linecap="round"
                 stroke-linejoin="round"
