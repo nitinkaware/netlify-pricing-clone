@@ -1,7 +1,7 @@
 .fade-enter-active, .fade-leave-active {
   transition: opacity .3s ease-in-out;
 }
-.fade-enter, .fade-leave-to {
+.fade-enter-from, .fade-leave-to {
   opacity: 0;
 }
 
@@ -48,4 +48,22 @@
   100% {
       transform: scaleY(0);
   }
+}
+
+.toggle-checkbox:checked {
+  @apply: right-0 border-green-400;
+  right: 0;
+  border-color: #68D391;
+}
+.toggle-checkbox:checked + .toggle-label {
+  @apply: bg-green-400;
+  background-color: #68D391;
+}
+
+.modal-enter-active, .modal-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.modal-enter-from, .modal-leave-to {
+  opacity: 0;
 }

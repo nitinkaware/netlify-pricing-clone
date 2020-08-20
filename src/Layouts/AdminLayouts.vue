@@ -4,7 +4,7 @@
       rel="stylesheet"
       href="https://rsms.me/inter/inter.css"
     >
-    <aside class="w-1/5 bg-gray-800 flex flex-col">
+    <aside class="w-72 bg-gray-800 flex flex-col">
       <div class="inline-flex justify-center items-center p-3.5 bg-gray-900">
         <svg
           class="w-8 h-8 text-white mr-2"
@@ -62,7 +62,11 @@
               Modals
             </span>
           </li>
-          <li class="inline-flex items-center rouned-md py-2 px-2 w-full rounded-md cursor-pointer hover:text-gray-300 hover:bg-gray-900">
+          <li 
+            class="inline-flex items-center rouned-md py-2 px-2 w-full rounded-md cursor-pointer hover:text-gray-300 hover:bg-gray-900"
+            :class="getClassName('forms')"
+            @click="$router.push('/forms')"
+          >
             <svg
               class="w-7 h-7"
               fill="none"
@@ -72,7 +76,10 @@
               viewBox="0 0 24 24"
               stroke="currentColor"
             ><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" /></svg>
-            <span class="ml-2">
+            <span
+              class="ml-2"
+              :class="getTextColor('forms')"
+            >
               Forms
             </span>
           </li>
@@ -107,7 +114,7 @@
         </ul>
       </div>
     </aside>
-    <div class="w-4/5 bg-gray-100 relative">
+    <div class="w-full bg-gray-100 relative">
       <div class="bg-white border shadow-sm flex justify-between items-center sticky">
         <div class="relative">
           <!-- Seach Input Container -->
