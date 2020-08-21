@@ -17,7 +17,7 @@
         <ToggleCheckbox
           v-else
           :value="appSetting.Value"
-          @toggled="(isChecked) => { appSetting.Value = isChecked}"
+          @toggled="onToggled"
         />
       </div>
     </td>
@@ -74,6 +74,12 @@ export default {
         return {
 
         }
+    },
+    methods: {
+      onToggled (isChecked) {
+        this.appSetting.Value = isChecked
+        this.$emit('saved', this.appSetting)
+      }
     }
 }
 </script>

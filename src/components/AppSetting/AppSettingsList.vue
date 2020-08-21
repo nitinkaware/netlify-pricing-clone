@@ -31,6 +31,7 @@
           :key="appSetting.Id"
           :app-setting="appSetting"
           @on-edit-clicked="onEditingButtonClicked"
+          @saved="onSaved"
         />
       </tbody>
     </table>
@@ -56,6 +57,41 @@
         @on-cancel-clicked="onCancelClicked"
       />
     </transition>
+
+    <transition
+      enter-active-class="transition-all duration-300 ease-in-out"
+      leave-active-class="transition-all duration-300 ease-in-out"
+      enter-to-class="opacity-100 scale-100"
+      leave-to-class="opacity-0 scale-75"
+      enter-from-class="opacity-0 scale-75"
+    >
+      <div
+        v-if="isShow"
+        class="absolute bottom-5 right-5 space-y-2"
+      >
+        <div
+          class="bg-green-300 text-gray-800 px-4 py-4 rounded-md flex space-x-2"
+        >
+          <svg
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="check-circle w-6 h-6"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path></svg>
+          <span>
+            Saved
+          </span>
+          <span class="font-medium">
+            {{ currentEditingAppSetting.Key }}
+          </span>
+        </div> 
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -72,11 +108,20 @@ export default {
   },
   data () {
     return {
+      isShow: false,
       isEditAppSettingModalVisible: false,
       currentEditingAppSetting: {}
     }
   },
   methods: {
+      onSaved (appSetting) {
+        this.isShow = true
+        this.currentEditingAppSetting = appSetting
+        
+        setTimeout(() => {
+            this.isShow = false
+        }, 5000);
+      },
       onEditingButtonClicked (appSetting) {
         this.currentEditingAppSetting = appSetting
         this.isEditAppSettingModalVisible = true

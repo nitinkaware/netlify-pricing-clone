@@ -61,7 +61,16 @@ export default {
             IsPostLoginSetting: 0,
             AppVersion: '1.2.2',
             AppEnviourment: 'live'
-          }
+          },
+          {
+            Id: 1,
+            Key: 'isStockAlertEnabled',
+            Value: true,
+            PlatformId: 18,
+            IsPostLoginSetting: 0,
+            AppVersion: '1.2.2',
+            AppEnviourment: null
+          },
         ]
       }
     },

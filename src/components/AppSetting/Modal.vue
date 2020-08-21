@@ -1,7 +1,7 @@
 <template>
   <div class="absolute w-full h-full top-0 left-0 flex justify-center">
     <div class="modal-overlay absolute w-full h-full bg-black opacity-25 top-0 left-0"></div>
-    <div class="absolute w-1/3 h-auto bg-white rounded-md shadow-lg top-16">
+    <div class="absolute w-112 h-auto bg-white rounded-md shadow-lg top-16">
       <div class="m-6 space-y-4">
         <div class="flex flex-col">
           <label
